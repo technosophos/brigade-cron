@@ -24,7 +24,7 @@ spec:
           serviceAccountName: {{ $fullname }}
           containers:
           - name: {{ .Chart.Name }}-job
-            image: "{{ .Values.image.registry }}/{{ .Values.image.name }}:{{ default .Chart.AppVersion .Values.image.tag }}"
+            image: "{{ default "deis" .Values.image.registry }}/{{ default "brig" .Values.image.name }}:{{ default .Chart.AppVersion .Values.image.tag }}"
             imagePullPolicy: {{ default "IfNotPresent" .Values.image.pullPolicy }}
             command:
               - brig

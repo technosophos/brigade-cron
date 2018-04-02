@@ -1,0 +1,11 @@
+project: "technosophos/brigade-cron"
+repository: "github.com/technosophos/brigade-cron"
+cloneURL: "https://github.com/technosophos/brigade-cron.git"
+vcsSidecar: "deis/git-sidecar:latest"
+
+# Advanced. You probably won't need to alter these.
+allowPrivilegedJobs: "false"
+github: {}
+secrets: {}
+kubernetes: {}
+worker: {}

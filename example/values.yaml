@@ -1,0 +1,14 @@
+schedule: "@hourly"
+project: "technosophos/brigade-cron"
+event: "cron"
+ref: "refs/heads/master"
+payload: "HELLO"
+
+# You might need to override this.
+rbac:
+  enabled: false
+
+image:
+  registry: deis
+  name: brig
+  tag: latest
