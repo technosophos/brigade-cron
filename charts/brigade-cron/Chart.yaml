@@ -1,0 +1,4 @@
+apiVersion: v1
+description: CronJob for triggering a Brigade event
+name: brigade-cron
+version: 0.1.0

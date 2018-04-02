@@ -1,0 +1,50 @@
+# Add values here
+#
+# This follows the Vixie-style Cron pattern, including '/'.
+# https://en.wikipedia.org/wiki/Cron
+# https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/#schedule
+# schedule: "0 0 * * *" # Hourly
+# schedule "*/5 * * * *" # Every 5 minutes
+schedule: "@hourly"
+
+# Project name or project ID
+project: "deis/empty-testbed"
+
+# You can make this whatever you want. This is the event that will be triggered
+# inside of the brigade.js
+#
+# Example:
+#   events.on("cron", () ={})
+event: "cron"
+
+# Determine what Git (VCS) "version" we are working with. Safe default is
+# just `ref: master`. If you set a `commit:` SHA, you should also set a branch
+# or tag name in `ref:`, since a commit can exist on multiple branches
+ref: "refs/heads/master"
+# commit: SOME_SHA
+
+# The data that is sent as the payload to your 'brigade.js' script. Often, it
+# contains JSON data. But really, it's whatever your script needs in the
+# event.payload property.
+payload: ""
+
+# You can override the briagde.js script in the project repo by supplying a script
+# here. However, we STRONGLY discourage doing this. It can be very difficult to
+# track and debug scripts this way.
+# script: ""
+
+rbac:
+  enabled: false
+
+
+# DEVELOPMENT
+image:
+  registry: deis
+  name: brig
+  tag: latest
+  # pullPolicy: IfNotPresent
+
+
+# ADVANCED
+# successfulJobsHistoryLimit: 10
+# failedJobsHistoryLimit: 10
