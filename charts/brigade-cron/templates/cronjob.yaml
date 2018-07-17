@@ -32,12 +32,17 @@ spec:
               - "$(BRIGADE_PROJECT)"
               - "--event=$(BRIGADE_EVENT)"
               - "--ref=$(BRIGADE_REF)"
+              - "--namespace=$(BRIGADE_NAMESPACE)"
               {{ if .Values.commit}}- "--commit=$(BRIGADE_COMMIT)"{{ end }}
               {{ if .Values.payload }}- "--payload=/brigade/payload.dat"{{ end }}
               {{ if .Values.script }}- "--file=/brigade/brigade.js"{{ end }}
             env:
             - name: KUBECONFIG
               value: ""
+            - name: BRIGADE_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
             - name: BRIGADE_PROJECT
               valueFrom:
                 secretKeyRef:
